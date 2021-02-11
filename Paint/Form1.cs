@@ -14,6 +14,7 @@ namespace Paint
     {
         //Global
         Graphics Graph;
+        Rectangle rec;
         Pen pen;
         int x = -1;
         int y = -1;
@@ -60,10 +61,12 @@ namespace Paint
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
         {
-           // if (cbMode.SelectedItem.Equals("Square"))
-           // {
-           //     DrawSquare(x, y, e.X, e.Y);
-           // }
+            if (cbMode.SelectedItem.Equals("Square") && cbFont.SelectedItem.Equals("Fill"))
+            {
+                SolidBrush bru = new SolidBrush(pen.Color);
+
+                Graph.FillRectangle(bru, rec);
+            }
 
             isMoving = false;
             x = -1;
@@ -75,6 +78,7 @@ namespace Paint
             isMoving = true;
             x = e.X;
             y = e.Y;
+
         }
 
         //Buttons Events
@@ -105,7 +109,9 @@ namespace Paint
         //Selected width changed
         private void cbWidth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pen.Width = int.Parse((cbFont.SelectedItem.ToString()));
+            string SelectedItem = cbFont.SelectedItem.ToString();
+
+            pen.Width = (SelectedItem.Equals("Fill")) ? 10 : int.Parse((cbFont.SelectedItem.ToString()));
         }
 
         //Main events
@@ -118,17 +124,23 @@ namespace Paint
 
         private void DrawSquare(int firstX, int firstY, int finallyX, int finallyY)
         {
-            Rectangle rec = new Rectangle();
+            rec = new Rectangle();
             rec.Width = finallyX - firstX;
             rec.Height = finallyY - firstY;
             rec.X = firstX;
             rec.Y = firstY;
             Graph.DrawRectangle(pen, rec);
+
         }
 
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void numRotate_ValueChanged(object sender, EventArgs e)
+        {
+            Graph.RotateTransform((float)numRotate.Value);
         }
     }
 }

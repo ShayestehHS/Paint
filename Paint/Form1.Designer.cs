@@ -31,6 +31,8 @@ namespace Paint
         {
             this.Panel = new System.Windows.Forms.Panel();
             this.ColorPicker = new System.Windows.Forms.Panel();
+            this.lblRotate = new System.Windows.Forms.Label();
+            this.numRotate = new System.Windows.Forms.NumericUpDown();
             this.btnErase = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cbMode = new System.Windows.Forms.ComboBox();
@@ -41,6 +43,7 @@ namespace Paint
             this.ColorRed = new System.Windows.Forms.Label();
             this.Panel.SuspendLayout();
             this.ColorPicker.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotate)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel
@@ -61,6 +64,8 @@ namespace Paint
             // 
             this.ColorPicker.BackColor = System.Drawing.Color.Turquoise;
             this.ColorPicker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ColorPicker.Controls.Add(this.lblRotate);
+            this.ColorPicker.Controls.Add(this.numRotate);
             this.ColorPicker.Controls.Add(this.btnErase);
             this.ColorPicker.Controls.Add(this.btnSave);
             this.ColorPicker.Controls.Add(this.cbMode);
@@ -75,10 +80,29 @@ namespace Paint
             this.ColorPicker.Size = new System.Drawing.Size(1125, 70);
             this.ColorPicker.TabIndex = 0;
             // 
+            // lblRotate
+            // 
+            this.lblRotate.AutoSize = true;
+            this.lblRotate.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblRotate.Location = new System.Drawing.Point(424, 31);
+            this.lblRotate.Name = "lblRotate";
+            this.lblRotate.Size = new System.Drawing.Size(55, 17);
+            this.lblRotate.TabIndex = 10;
+            this.lblRotate.Text = "Rotate:";
+            // 
+            // numRotate
+            // 
+            this.numRotate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.numRotate.Location = new System.Drawing.Point(485, 29);
+            this.numRotate.Name = "numRotate";
+            this.numRotate.Size = new System.Drawing.Size(74, 25);
+            this.numRotate.TabIndex = 9;
+            this.numRotate.ValueChanged += new System.EventHandler(this.numRotate_ValueChanged);
+            // 
             // btnErase
             // 
             this.btnErase.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnErase.Location = new System.Drawing.Point(928, 28);
+            this.btnErase.Location = new System.Drawing.Point(923, 26);
             this.btnErase.Name = "btnErase";
             this.btnErase.Size = new System.Drawing.Size(103, 27);
             this.btnErase.TabIndex = 8;
@@ -89,7 +113,7 @@ namespace Paint
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnSave.Location = new System.Drawing.Point(1037, 28);
+            this.btnSave.Location = new System.Drawing.Point(1032, 26);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 7;
@@ -123,13 +147,14 @@ namespace Paint
             "9",
             "10",
             "20",
-            "30"});
+            "30",
+            "Fill"});
             this.cbFont.Location = new System.Drawing.Point(259, 28);
             this.cbFont.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.cbFont.Name = "cbFont";
             this.cbFont.Size = new System.Drawing.Size(60, 25);
             this.cbFont.TabIndex = 5;
-            this.cbFont.Text = "Font";
+            this.cbFont.Text = "5";
             this.cbFont.SelectedIndexChanged += new System.EventHandler(this.cbWidth_SelectedIndexChanged);
             // 
             // ColorBlack
@@ -196,6 +221,8 @@ namespace Paint
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Panel.ResumeLayout(false);
             this.ColorPicker.ResumeLayout(false);
+            this.ColorPicker.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,6 +239,8 @@ namespace Paint
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.Button btnErase;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblRotate;
+        private System.Windows.Forms.NumericUpDown numRotate;
     }
 }
 
