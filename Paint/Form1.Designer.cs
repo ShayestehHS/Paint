@@ -31,20 +31,21 @@ namespace Paint
         {
             this.Panel = new System.Windows.Forms.Panel();
             this.ColorPicker = new System.Windows.Forms.Panel();
+            this.btnErase = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.cbMode = new System.Windows.Forms.ComboBox();
             this.cbFont = new System.Windows.Forms.ComboBox();
             this.ColorBlack = new System.Windows.Forms.Label();
             this.ColorBlue = new System.Windows.Forms.Label();
             this.ColorGreen = new System.Windows.Forms.Label();
             this.ColorRed = new System.Windows.Forms.Label();
-            this.cbMode = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnErase = new System.Windows.Forms.Button();
             this.Panel.SuspendLayout();
             this.ColorPicker.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel
             // 
+            this.Panel.BackColor = System.Drawing.Color.White;
             this.Panel.Controls.Add(this.ColorPicker);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel.Location = new System.Drawing.Point(0, 0);
@@ -58,7 +59,7 @@ namespace Paint
             // 
             // ColorPicker
             // 
-            this.ColorPicker.BackColor = System.Drawing.Color.Transparent;
+            this.ColorPicker.BackColor = System.Drawing.Color.Turquoise;
             this.ColorPicker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ColorPicker.Controls.Add(this.btnErase);
             this.ColorPicker.Controls.Add(this.btnSave);
@@ -73,6 +74,42 @@ namespace Paint
             this.ColorPicker.Name = "ColorPicker";
             this.ColorPicker.Size = new System.Drawing.Size(1125, 70);
             this.ColorPicker.TabIndex = 0;
+            // 
+            // btnErase
+            // 
+            this.btnErase.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnErase.Location = new System.Drawing.Point(928, 28);
+            this.btnErase.Name = "btnErase";
+            this.btnErase.Size = new System.Drawing.Size(103, 27);
+            this.btnErase.TabIndex = 8;
+            this.btnErase.Text = "Erase all";
+            this.btnErase.UseVisualStyleBackColor = true;
+            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnSave.Location = new System.Drawing.Point(1037, 28);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 27);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // cbMode
+            // 
+            this.cbMode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "Line",
+            "Square"});
+            this.cbMode.Location = new System.Drawing.Point(332, 28);
+            this.cbMode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(86, 25);
+            this.cbMode.TabIndex = 6;
+            this.cbMode.Text = "Line";
+            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
             // 
             // cbFont
             // 
@@ -146,40 +183,6 @@ namespace Paint
             this.ColorRed.TabIndex = 1;
             this.ColorRed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ColorRed.Click += new System.EventHandler(this.Color_Click);
-            // 
-            // cbMode
-            // 
-            this.cbMode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cbMode.FormattingEnabled = true;
-            this.cbMode.Items.AddRange(new object[] {
-            "Line",
-            "Square"});
-            this.cbMode.Location = new System.Drawing.Point(332, 28);
-            this.cbMode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.cbMode.Name = "cbMode";
-            this.cbMode.Size = new System.Drawing.Size(86, 25);
-            this.cbMode.TabIndex = 6;
-            this.cbMode.Text = "Line";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnSave.Location = new System.Drawing.Point(1037, 28);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnErase
-            // 
-            this.btnErase.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnErase.Location = new System.Drawing.Point(928, 28);
-            this.btnErase.Name = "btnErase";
-            this.btnErase.Size = new System.Drawing.Size(103, 27);
-            this.btnErase.TabIndex = 8;
-            this.btnErase.Text = "Erase all";
-            this.btnErase.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 

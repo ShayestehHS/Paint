@@ -12,12 +12,14 @@ namespace Paint
 {
     public partial class frmMain : Form
     {
+        //Global
         Graphics Graph;
         Pen pen;
         int x = -1;
         int y = -1;
         bool isMoving = false;
-        //Selected color is:
+
+        //Default color is:
         string SelColor = "ColorBlack";
 
         public frmMain()
@@ -29,6 +31,12 @@ namespace Paint
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //Panel Events
         private void Panel_MouseMove(object sender, MouseEventArgs e)
         {
             if (isMoving && x != -1 && y != -1)
@@ -42,9 +50,8 @@ namespace Paint
                         }
                     case "Square":
                         {
-                            var Wid = e.Location.X - x;
-                            var Hei = e.Location.Y - y;
-                            Graph.DrawRectangle(pen, x, y, Wid, Hei);
+                            Graph.Clear(Color.White);
+                            DrawSquare(x, y, e.X, e.Y);
                             break;
                         }
                 }
@@ -53,6 +60,11 @@ namespace Paint
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
         {
+           // if (cbMode.SelectedItem.Equals("Square"))
+           // {
+           //     DrawSquare(x, y, e.X, e.Y);
+           // }
+
             isMoving = false;
             x = -1;
             y = -1;
@@ -65,6 +77,13 @@ namespace Paint
             y = e.Y;
         }
 
+        //Buttons Events
+        private void btnErase_Click(object sender, EventArgs e)
+        {
+            Graph.Clear(Color.White);
+        }
+
+        //Selected color changed
         private void Color_Click(object sender, EventArgs e)
         {
             //Previous Color => P
@@ -83,21 +102,33 @@ namespace Paint
             SelColor = S.Name;
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //Selected width changed
         private void cbWidth_SelectedIndexChanged(object sender, EventArgs e)
         {
             pen.Width = int.Parse((cbFont.SelectedItem.ToString()));
         }
 
+        //Main events
         private void DrawLine(MouseEventArgs e)
         {
             Graph.DrawLine(pen, new Point(x, y), e.Location);
             x = e.X;
             y = e.Y;
+        }
+
+        private void DrawSquare(int firstX, int firstY, int finallyX, int finallyY)
+        {
+            Rectangle rec = new Rectangle();
+            rec.Width = finallyX - firstX;
+            rec.Height = finallyY - firstY;
+            rec.X = firstX;
+            rec.Y = firstY;
+            Graph.DrawRectangle(pen, rec);
+        }
+
+        private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
